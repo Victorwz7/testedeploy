@@ -1,18 +1,9 @@
 version: 1
 applications:
   - appRoot: src
-    backend:
-      api:
-        name: api
-        resourceType: Lambda
-        functions:
-          - name: login
-            handler: src/api/login.handler
-          - name: register
-            handler: src/api/register.handler
     frontend:
       framework: nextjs
       artifacts:
-        baseDirectory: .next
+        baseDirectory: .next  # Certifique-se de que a pasta .next seja usada
         files:
           - '**/*'
