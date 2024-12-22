@@ -1,7 +1,7 @@
 // src/api/login.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
-import prisma from '../../lib/prisma';
+import prisma from '../../src/lib/prisma';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
