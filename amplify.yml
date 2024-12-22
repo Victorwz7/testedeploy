@@ -21,7 +21,14 @@ applications:
       phases:
         preBuild:
           commands:
-            - echo Backend is not configured  # Ajuste conforme necessário, se você tiver backend configurado
+            - npm ci  # Instala as dependências do backend
         build:
           commands:
-            - echo "No backend build required"
+            - npm run build:backend  # Comando para construir o backend
+      artifacts:
+        baseDirectory: dist  # Diretório de saída do backend
+        files:
+          - '**/*'  # Inclui todos os arquivos gerados dentro da pasta dist
+      cache:
+        paths:
+          - node_modules/**/*
