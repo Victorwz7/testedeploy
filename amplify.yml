@@ -1,9 +1,18 @@
 version: 1
 applications:
-  - appRoot: src
+  - appRoot: .  # Certifique-se de que o appRoot seja a raiz do seu projeto, onde o package.json está localizado
     frontend:
       framework: nextjs
+      build:
+        commands:
+          - npm install
+          - npm run build  # Comando para construir a aplicação Next.js
       artifacts:
-        baseDirectory: .next  # Certifique-se de que a pasta .next seja usada
+        baseDirectory: .next  # Diretório de saída do Next.js
         files:
-          - '**/*'
+          - '**/*'  # Inclui todos os arquivos gerados dentro da pasta .next
+    backend:
+      phases:
+        preBuild:
+          commands:
+            - echo Backend is not configured  # Ajuste conforme necessário, se você tiver backend configurado
