@@ -1,0 +1,19 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL") // URL do banco de dados MySQL na AWS RDS
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement()) // ID do usuário, autoincrementado
+  name      String   // Nome do usuário
+  email     String   @unique // Email único, não pode haver dois usuários com o mesmo email
+  password  String   // Senha criptografada
+  createdAt DateTime @default(now()) // Data de criação, padrão: data atual
+  updatedAt DateTime @updatedAt // Data de atualização, sempre será atualizada ao modificar o registro
+}
